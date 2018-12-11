@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{courseController.loadCourses()}" />
+</f:metadata>
+
+<h:head>
+	<title>DCW Project 2018/19</title>
+</h:head>
+<h:body>
+	<h2>List Courses</h2>
+	<h:link value="Home" outcome="index" />
+	<br />
+	<h:link value="Manage Students" outcome="list_students" />
+<br/>
+  	#{courseController.courses[0].cid}
+
+<ui:repeat value="#{courseController.loadCourses()}" var="i">
+  	#{courseController.courses[i].cid}
+</ui:repeat>
+
+
+</h:body>
+</html>
