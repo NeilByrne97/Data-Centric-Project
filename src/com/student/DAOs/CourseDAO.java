@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 
 import com.student.Models.CourseModel;
 
-
 public class CourseDAO {
 	 private DataSource mysqlDS;
 
@@ -24,7 +23,7 @@ public class CourseDAO {
 	  }
 	 
 	 public List<CourseModel> loadCourses() throws SQLException{
-		 System.out.println("DAO works");
+		 System.out.println("CourseDAO works");
 		 Connection conn = mysqlDS.getConnection();
 		 Statement myStmt = conn.createStatement();
 		 String query = "select * from course";
@@ -32,7 +31,7 @@ public class CourseDAO {
 		 
 		 List<CourseModel> courses = new ArrayList<>();
 		 
-		 while( rs.next() ) {
+		 while(rs.next() ) {
 			String cid = rs.getString("cID");
 			String cname = rs.getString("cName");
 			int duration = rs.getInt("duration");
@@ -42,5 +41,7 @@ public class CourseDAO {
 		 
 		 return courses;
 	 }
+	 
+	 
 
 }

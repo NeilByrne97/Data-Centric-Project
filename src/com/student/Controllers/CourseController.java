@@ -9,9 +9,6 @@ import javax.faces.bean.ManagedBean;
 import com.student.DAOs.CourseDAO;
 import com.student.Models.CourseModel;
 
-
-
-
 @ManagedBean
 @ApplicationScoped
 public class CourseController {
@@ -44,5 +41,7 @@ public class CourseController {
 		System.out.println("load courses");
 		this.courses = dao.loadCourses();
 	}
+	
+	
 
 }

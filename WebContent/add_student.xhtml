@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+	<title>Add Student</title>
+</h:head>
+<h:body>
+
+<h3>Add Student</h3>
+
+
+<form>
+<label for="studentID">Student ID:</label>
+<input type="text" name="studentID" id="studentID" /><br />
+
+<label for="name">Name:</label>
+<input type="text" name="name" id="name" /><br />
+
+<label for="address">Address:</label>
+<input type="text" name="address" id="address" /><br/>
+
+<label for="address">Course ID:</label>
+<input type="text" name="courseID" id="courseID" /><br/>
+
+<br/><br/>
+<h:commandButton value="Add" action="#{studentController.addStudent(StudentModel)}"/>
+
+
+</form>
+
+
+</h:body>
+</html>

@@ -10,7 +10,7 @@
 </f:metadata>
 
 <h:head>
-	<title>DCW Project 2018/19</title>
+	<title>List Courses</title>
 </h:head>
 <h:body>
 	<h2>List Courses</h2>
@@ -18,12 +18,40 @@
 	<br />
 	<h:link value="Manage Students" outcome="list_students" />
 <br/>
-  	#{courseController.courses[0].cid}
+	<h:commandButton value="Add Course" action="add_course.xhtml"/>
 
-<ui:repeat value="#{courseController.loadCourses()}" var="i">
-  	#{courseController.courses[i].cid}
-</ui:repeat>
+<h:outputStylesheet library="css" name="tables.css" />
+	<h:form>
+		<h:dataTable value="#{courseController.courses}" var="courses" styleClass="table"
+			headerClass="table-header" rowClasses="table-odd-row, table-even-row">
 
+			<h:column>
+				<f:facet name="header">Course ID</f:facet>
+				<h:outputText value="#{courses.cid}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Course Name</f:facet>
+				<h:outputText value="#{courses.cname}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Course Duration</f:facet>
+				<h:outputText value="#{courses.duration}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:link value="Show " outcome="list_students" />
+				<h:link value="Students " outcome="list_students" />
+				<h:link value="Delete " outcome="list_students" />
+			</h:column>
+		</h:dataTable>
+</h:form>
+
+
+  
+  	
 
 </h:body>
 </html>
