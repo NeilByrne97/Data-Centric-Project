@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 
 import com.student.DAOs.CourseDAO;
 import com.student.Models.CourseModel;
+import com.student.Models.StudentModel;
 
 @ManagedBean
 @ApplicationScoped
@@ -42,6 +43,19 @@ public class CourseController {
 		this.courses = dao.loadCourses();
 	}
 	
+	public String addCourse(CourseModel c){
+		System.out.println("Howdy"+c.toString());
+		dao.insertCourse(c);
+
+		return "list_courses.xhtml";
+	}
+	
+	public String deleteCourse(CourseModel c){
+		System.out.println("Deleting "+c.toString());
+		dao.deleteCourse(c);
+
+		return "list_courses.xhtml";
+	}
 	
 
 }

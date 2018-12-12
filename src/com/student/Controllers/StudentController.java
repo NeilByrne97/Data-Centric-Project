@@ -40,21 +40,25 @@ public class StudentController {
 	}
 
 	public void loadStudents() throws SQLException {
-		System.out.println("load students");
+		System.out.println("Load students");
 		this.students = dao.loadStudents();
 	}
 	
 	public String addStudent(StudentModel s){
 		System.out.println("Howdy"+s.toString());
-		
-		try{
-			dao.insertStudent(s);
-		}catch(SQLException e){
-			FacesMessage message = new FacesMessage("Error");
-			FacesContext.getCurrentInstance().addMessage(null, message);
-		}//	catch
-		return "list_courses.xhtml";
+		dao.insertStudent(s);
+
+		return "list_students.xhtml";
 	}
+	
+	public String deleteStudent(StudentModel s){
+		System.out.println("Deleting"+s.toString());
+		dao.deleteStudent(s);
+
+		return "list_students.xhtml";
+	}
+	
+	
 
 
 }

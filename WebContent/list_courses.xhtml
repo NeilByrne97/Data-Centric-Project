@@ -18,10 +18,11 @@
 	<br />
 	<h:link value="Manage Students" outcome="list_students" />
 <br/>
-	<h:commandButton value="Add Course" action="add_course.xhtml"/>
 
 <h:outputStylesheet library="css" name="tables.css" />
 	<h:form>
+		<h:commandButton value="Add Course" action="add_course.xhtml"/>
+	
 		<h:dataTable value="#{courseController.courses}" var="courses" styleClass="table"
 			headerClass="table-header" rowClasses="table-odd-row, table-even-row">
 
@@ -42,9 +43,10 @@
 			
 			<h:column>
 				<f:facet name="header">Action</f:facet>
-				<h:link value="Show " outcome="list_students" />
-				<h:link value="Students " outcome="list_students" />
-				<h:link value="Delete " outcome="list_students" />
+					<h:link value="Show Students  " action="#{courseController.deleteCourse(CourseModel)}"/>
+	  				<h:link value="Delete" action="#{courseController.deleteCourse(courseModel)}"/>
+					<h:commandButton value="Delete" action="#{courseController.deleteCourse(courseModel)}"/>
+
 			</h:column>
 		</h:dataTable>
 </h:form>

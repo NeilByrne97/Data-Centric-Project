@@ -10,6 +10,17 @@ public class CourseModel {
 	private String cname;
 	private int duration;
 	
+	public CourseModel(){
+		
+	}
+
+	public CourseModel(String cid, String cname, int duration) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.duration = duration;
+	}
+	
 	public String getcid() {
 		return cid;
 	}
@@ -29,11 +40,5 @@ public class CourseModel {
 		this.duration = duration;
 	}
 	
-	public CourseModel(String cid, String cname, int duration) {
-		super();
-		this.cid = cid;
-		this.cname = cname;
-		this.duration = duration;
-	}
 
 }

@@ -4,13 +4,27 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
+@ApplicationScoped
 public class StudentModel {
 
+	
 	private String sid;
 	private String cid;
 	private String name;
 	private String address;
 
+	public StudentModel(){
+	}
+	
+	public StudentModel(String sid, String cid, String name, String address) {
+		super();
+		this.sid = sid;
+		this.cid = cid;
+		this.name = name;
+		this.address = address;
+	}
+	
+	
 	public String getSid() {
 		return sid;
 	}
@@ -43,13 +57,6 @@ public class StudentModel {
 		this.address = address;
 	}
 
-	public StudentModel(String sid, String cid, String name, String address) {
-		super();
-		this.sid = sid;
-		this.cid = cid;
-		this.name = name;
-		this.address = address;
 
-	}
 
 }

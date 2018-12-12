@@ -11,6 +11,7 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import com.student.Models.StudentModel;
 
@@ -40,24 +41,52 @@ public class StudentDAO {
 
 			students.add(new StudentModel(sid, cid, name, address));
 		}
-
 		return students;
 	}
 
-	public void insertStudent(StudentModel s) throws SQLException{
+	public void insertStudent(StudentModel s){
 		
 		String id = s.getCid();
 		String name = s.getName();
 		String sid = s.getSid();
 		String address = s.getAddress();
-		Connection conn = mysqlDS.getConnection();
+	
+		PreparedStatement myStmt;
+		try {
+			Connection conn = mysqlDS.getConnection();
+			myStmt = conn.prepareStatement("INSERT into student (sid, cID, name, address) VALUES (?, ?, ?, ?)");
+			myStmt.setString(1, sid);
+			myStmt.setString(2, id);
+			myStmt.setString(3, address);
+			myStmt.setString(4, name);
+			
+			myStmt.executeUpdate();	
+		}
+		catch (MySQLIntegrityConstraintViolationException e){
+			e.printStackTrace();
+			System.out.println("Invalid Course ID!");
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		PreparedStatement myStmt = conn.prepareStatement("Insert Student(sid, cID, sID, address");
-		myStmt.setString(1, sid);
-		myStmt.setString(2, id);
-		myStmt.setString(3, address);
-		myStmt.setString(4, name);
+	}
 
+	public void deleteStudent(StudentModel s) {
+		System.out.println("Deleting");
+		Connection conn;
+		try {
+		conn = mysqlDS.getConnection();
+		// sql command that deletes course where course id is entered
+		PreparedStatement myStmt = conn.prepareStatement("DELETE from student where sid = ?");
+		myStmt.setString(1, s.getSid());
+		myStmt.executeUpdate();
 		
+		myStmt.close();// closes statement
+		conn.close();// closes connection
+		} catch (SQLException e) {
+		e.printStackTrace();
+		} // catch		
 	}
 }

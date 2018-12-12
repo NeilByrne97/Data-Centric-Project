@@ -21,8 +21,11 @@
 	
 	<h:outputStylesheet library="css" name="tables.css" />
 	<h:form>
+				<h:commandButton value="Add Student" action="add_student.xhtml"/>
+	
 		<h:dataTable value="#{studentController.students}" var="students" styleClass="table"
 			headerClass="table-header" rowClasses="table-odd-row, table-even-row">
+
 
 			<h:column>
 				<f:facet name="header">Student ID</f:facet>
@@ -46,6 +49,8 @@
 			
 			<h:column>
 				<f:facet name="header">Action</f:facet>
+  				<h:link value="Delete" action="#{studentController.deleteStudent(s)}"/>
+  				
 			</h:column>
 			
 			

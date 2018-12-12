@@ -12,20 +12,25 @@
 <h3>Add Course</h3>
 
 
-<form>
-<label for="courseID">Course ID:</label>
-<input type="text" name="CourseID" id="CourseID" /><br />
+<h:form>
+<h:outputLabel for="courseID" value="Course ID"/>
+<h:inputText id="cid" required="true" value="#{courseModel.cid}" /><br />
 
-<label for="name">Name:</label>
-<input type="text" name="name" id="name" /><br />
+<h:outputLabel for="cName" value="Name"/>
+<h:inputText id="cname" required="true" value="#{courseModel.cname}"/><br />
 
-<label for="duration">Duration:</label>
-<input type="number" name="duration" id="duration" /><br/>
+<h:outputLabel for="duration" value="Duration"/>
+<h:inputText  id="duration" required="true" value="#{courseModel.duration}"/><br/>
+
 <br/><br/>
-<h:commandButton value="Add" action="add_course.xhtml"/>
+<h:commandButton value="Add" action="#{courseController.addCourse(courseModel)}"/>
 
 
-</form>
+</h:form>
+<br>
+</br>
+	<h:link value="Home" outcome="index" /><br></br>
+	<h:link value="Courses" outcome="list_courses" />
 
 
 </h:body>
